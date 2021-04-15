@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import rva.jpa.Liga;
 import rva.repository.LigaRepository;
 
+@CrossOrigin
 @RestController
 public class LigaRestController {
 	
@@ -62,15 +64,16 @@ public class LigaRestController {
 	}
 	//delete
 	
-	@Transactional
+//	@Transactional
 	@DeleteMapping("liga/{id}")
-	public ResponseEntity<Liga> deleteIgrac(@PathVariable("id") Integer id){
+	public ResponseEntity<Liga> deleteLiga(@PathVariable("id") Integer id){
 		if(!ligaRepository.existsById(id))
 			return new ResponseEntity<Liga>(HttpStatus.NO_CONTENT);
 		
-		jdbcTemplate.execute("DELETE FROM tim WHERE liga=" + id);
+		
 		
 		ligaRepository.deleteById(id);
+		jdbcTemplate.execute("DELETE FROM tim WHERE liga=" + id);
 		if(id == -100)
 			jdbcTemplate.execute("INSERT INTO \"liga\" (\"id\", \"naziv\", \"oznaka\") "
 				+ "VALUES (-100, 'TestLigga', 'TST')");
