@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import rva.jpa.Igrac;
 import rva.repository.IgracRepository;
 
 @CrossOrigin
 @RestController
+@Api(tags = {"Igrač CRUD operacije"})
 public class IgracRestController {
 	
 	@Autowired
@@ -29,21 +32,25 @@ public class IgracRestController {
 	private JdbcTemplate jdbcTemplate;
 	
 	@GetMapping("igrac")
+	@ApiOperation(value = "Vraća kolekciju svih igrača iz baze podataka.")
 	public Collection<Igrac> getIgraci() {
 		return igracRepository.findAll();
 	}
 
 	@GetMapping("igrac/{id}")
+	@ApiOperation(value = "Vraća igrača u odnosu na prosleđenu vrednost path varijable id.")
 	public Igrac getIgrac(@PathVariable ("id") Integer id) {
 		return igracRepository.getOne(id);
 	}
 	
 	@GetMapping("igracIme/{ime}")
+	@ApiOperation(value = "Vraća kolekciju igrača koji sadrže vrednost prosleđenu u okviru path varijable ime.")
 	public Collection<Igrac> getIgracByIme(@PathVariable ("ime") String ime){
 		return igracRepository.findByImeContainingIgnoreCase(ime);
 	}
 	//insert
 	@PostMapping("igrac")
+	@ApiOperation(value = "Dodaje novog igrača u bazu podataka.")
 	public ResponseEntity<Igrac> insertIgrac(@RequestBody Igrac igrac){
 		if(!igracRepository.existsById(igrac.getId())) {
 			igracRepository.save(igrac);
@@ -53,6 +60,7 @@ public class IgracRestController {
 	}
 	//update
 	@PutMapping("igrac")
+	@ApiOperation(value = "Update-uje postojećeg igrača.")
 	public ResponseEntity<Igrac> updateIgrac(@RequestBody Igrac igrac) {
 		if(!igracRepository.existsById(igrac.getId())) {
 			return new ResponseEntity<Igrac>(HttpStatus.NO_CONTENT);
@@ -62,6 +70,7 @@ public class IgracRestController {
 	}
 	//delete
 	@DeleteMapping("igrac/{id}")
+	@ApiOperation(value = "Briše igrača u odnosu na vrednost prosleđene path varijable id.")
 	public ResponseEntity<Igrac> deleteIgrac(@PathVariable("id") Integer id){
 		if(!igracRepository.existsById(id))
 			return new ResponseEntity<Igrac>(HttpStatus.NO_CONTENT);

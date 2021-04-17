@@ -17,11 +17,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import rva.jpa.Nacionalnost;
 import rva.repository.NacionalnostRepository;
 
 @CrossOrigin
 @RestController
+@Api(tags = {"Nacionalnost CRUD operacije"})
 public class NacionalnostRestController {
 
 	@Autowired
@@ -31,21 +34,25 @@ public class NacionalnostRestController {
 	private JdbcTemplate jdbcTemplate;
 	
 	@GetMapping("nacionalnost")
+	@ApiOperation(value = "Vraća kolekciju svih nacionalnosti iz baze podataka.")
 	public Collection<Nacionalnost> getNacionalnosti(){
 		return nacionalnostRepository.findAll();
 	}
 	
 	@GetMapping("nacionalnost/{id}")
+	@ApiOperation(value = "Vraća nacionalnost u odnosu na prosleđenu vrednost path varijable id.")
 	public Nacionalnost getNacionalnost(@PathVariable ("id") Integer id){
 		return nacionalnostRepository.getOne(id);
 	}
 	
 	@GetMapping("nacionalnostNaziv/{naziv}")
+	@ApiOperation(value = "Vraća kolekciju nacionalnosti koje sadrže vrednost prosleđenu u okviru path varijable naziv.")
 	public Collection<Nacionalnost> getNacionalnostByNaziv(@PathVariable ("naziv") String naziv) {
 		return nacionalnostRepository.findByNazivContainingIgnoreCase(naziv);
 	}
 	
 	@PostMapping("nacionalnost")
+	@ApiOperation(value = "Dodaje novu nacionalnost u bazu podataka.")
 	public ResponseEntity<Nacionalnost> insertNacionalnost(@RequestBody Nacionalnost nacionalnost){
 		if(!nacionalnostRepository.existsById(nacionalnost.getId())) {
 			nacionalnostRepository.save(nacionalnost);
@@ -55,6 +62,7 @@ public class NacionalnostRestController {
 	}
 	
 	@PutMapping("nacionalnost")
+	@ApiOperation(value = "Update-uje postojeću nacionalnost.")
 	public ResponseEntity<Nacionalnost> updateNacionalnost(@RequestBody Nacionalnost nacionalnost){
 		if(!nacionalnostRepository.existsById(nacionalnost.getId()))
 				return new ResponseEntity<Nacionalnost>(HttpStatus.NO_CONTENT);
@@ -64,6 +72,7 @@ public class NacionalnostRestController {
 	
 //	@Transactional
 	@DeleteMapping("nacionalnost/{id}")
+	@ApiOperation(value = "Briše nacionalnost u odnosu na vrednost prosleđene path varijable id.")
 	public ResponseEntity<Nacionalnost> deleteNacionalnost(@PathVariable("id") Integer id){
 		if(!nacionalnostRepository.existsById(id))
 			return new ResponseEntity<Nacionalnost>(HttpStatus.NO_CONTENT);
