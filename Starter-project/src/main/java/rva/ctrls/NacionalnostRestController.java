@@ -82,7 +82,7 @@ public class NacionalnostRestController {
 		nacionalnostRepository.deleteById(id);
 		if(id == -100)
 			jdbcTemplate.execute("INSERT INTO \"nacionalnost\" (\"id\", \"naziv\", \"skracenica\") "
-				+ "VALUES (-100, 'TestNacionalnost', 'NAC')");
+				+ "VALUES (-100, 'TestNacionalnost', 'NCC')");
 		return new ResponseEntity<Nacionalnost>(HttpStatus.OK);
 	}
 }
