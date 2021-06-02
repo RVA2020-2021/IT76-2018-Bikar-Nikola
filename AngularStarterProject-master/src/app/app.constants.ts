@@ -1,0 +1,1 @@
+export const TIM_URL = 'http://localhost:8083/tim';

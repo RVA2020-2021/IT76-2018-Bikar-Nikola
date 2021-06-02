@@ -2,7 +2,7 @@
     <mat-sidenav mode="over" [fixedInViewport]="true" opened mode="side">
         <mat-accordion>
             <a mat-button style="text-align: center">
-                <mat-icon>
+                <mat-icon [routerLink]="['/home']">
                     Home
                 </mat-icon>
             </a>
@@ -16,13 +16,13 @@
                     </mat-panel-description>
                 </mat-expansion-panel-header>
                 <mat-nav-list>
-                    <a mat-button>Liga</a>
+                    <a [routerLink]="['/liga']" mat-button>Liga</a>
                 </mat-nav-list>
                 <mat-nav-list>
-                    <a mat-button>Tim</a>
+                    <a [routerLink]="['/tim']" mat-button>Tim</a>
                 </mat-nav-list>
                 <mat-nav-list>
-                    <a mat-button>Igrac</a>
+                    <a [routerLink]="['/nacionalnost']" mat-button>Nacionalnost</a>
                 </mat-nav-list>
             </mat-expansion-panel>
             <mat-expansion-panel>
@@ -46,4 +46,5 @@
             </mat-expansion-panel>
         </mat-accordion>
     </mat-sidenav>
+    <router-outlet></router-outlet>
 </mat-sidenav-container>
