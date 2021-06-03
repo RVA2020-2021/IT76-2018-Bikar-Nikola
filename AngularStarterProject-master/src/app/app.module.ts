@@ -31,6 +31,7 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input'
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { NacionalnostDialogComponent } from './components/dialogs/nacionalnost-dialog/nacionalnost-dialog.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     NacionalnostComponent,
     TimComponent,
     TimDialogComponent,
+    NacionalnostDialogComponent,
 
   ],
   imports: [

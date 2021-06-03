@@ -4,5 +4,6 @@ export class Tim{
     naziv: String;
     osnovan: Date;
     sediste: String;
+    liga: number;
 
 }

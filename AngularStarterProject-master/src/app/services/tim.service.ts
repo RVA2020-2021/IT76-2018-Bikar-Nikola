@@ -16,6 +16,7 @@ export class TimService {
   }
   
   public addTim(tim: Tim): Observable<any> {
+    tim.id=0;
     return this.httpClient.post(`${TIM_URL}`, tim);
   }
 
