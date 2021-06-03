@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
+import { Liga } from 'src/app/models/liga';
 import { Tim } from 'src/app/models/tim';
 import { TimService } from 'src/app/services/tim.service';
 import { TimDialogComponent } from '../dialogs/tim-dialog/tim-dialog.component';
@@ -13,7 +14,7 @@ import { TimDialogComponent } from '../dialogs/tim-dialog/tim-dialog.component';
 })
 export class TimComponent implements OnInit, OnDestroy {
 
-  displayedColumns = ['id', 'naziv', 'osnovan','sediste', 'actions'];
+  displayedColumns = ['id', 'naziv', 'osnovan','sediste', 'liga', 'actions'];
   dataSource: MatTableDataSource<Tim>
   subscription: Subscription;
   constructor(private timService: TimService,
@@ -38,8 +39,8 @@ export class TimComponent implements OnInit, OnDestroy {
     }
   }
 
-  public openDialog(flag: number, id?: number, naziv? : String, osnovan?:Date, sediste?: String) {
-      const dialogRef = this.dialog.open(TimDialogComponent, {data: {id,naziv,osnovan,sediste}});
+  public openDialog(flag: number, id?: number, naziv? : String, osnovan?:Date, sediste?: String, liga?: Liga) {
+      const dialogRef = this.dialog.open(TimDialogComponent, {data: {id,naziv,osnovan,sediste, liga}});
       dialogRef.componentInstance.flag = flag;
       dialogRef.afterClosed().subscribe(result => {
         if(result == 1){

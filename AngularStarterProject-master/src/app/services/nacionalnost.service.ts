@@ -14,14 +14,14 @@ export class NacionalnostService {
   public getAllNacionalnosts() : Observable<any>{
     return this.httpClient.get(`${NACIONALNOST_URL}`);
   }
-  public addNacionalnosts(nacionalnost : Nacionalnost) : Observable<any>{
+  public addNacionalnost(nacionalnost : Nacionalnost) : Observable<any>{
     nacionalnost.id = 0;
     return this.httpClient.post(`${NACIONALNOST_URL}`, nacionalnost);
   }
-  public updateNacionalnosts(nacionalnost : Nacionalnost) : Observable<any>{
+  public updateNacionalnost(nacionalnost : Nacionalnost) : Observable<any>{
     return this.httpClient.put(`${NACIONALNOST_URL}`, nacionalnost);
   }
-  public deleteNacionalnosts(id: number) : Observable<any>{
+  public deleteNacionalnost(id: number) : Observable<any>{
     return this.httpClient.delete(`${NACIONALNOST_URL}/${id}`);
   }
 

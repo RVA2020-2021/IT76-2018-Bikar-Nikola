@@ -23,7 +23,7 @@ export class NacionalnostDialogComponent implements OnInit {
   }
   
   public add() : void {
-    this.nacionalnostService.addNacionalnosts(this.data).subscribe(() => {
+    this.nacionalnostService.addNacionalnost(this.data).subscribe(() => {
       this.snackBar.open('Uspesno dodat nacionalnost: ' + this.data.naziv, 'OK', {
         duration: 25000
       })
@@ -37,7 +37,7 @@ export class NacionalnostDialogComponent implements OnInit {
   }
 
   public update() : void{
-    this.nacionalnostService.updateNacionalnosts(this.data).subscribe(()=>{
+    this.nacionalnostService.updateNacionalnost(this.data).subscribe(()=>{
       this.snackBar.open('Uspesno azurirana nacionalnost: ' + this.data.naziv, 'OK', {
         duration: 2500
       })
@@ -51,7 +51,7 @@ export class NacionalnostDialogComponent implements OnInit {
   }
 
   public delete() : void{
-    this.nacionalnostService.deleteNacionalnosts(this.data.id).subscribe(()=>{
+    this.nacionalnostService.deleteNacionalnost(this.data.id).subscribe(()=>{
       this.snackBar.open('Uspesno obrisana nacioanlnost: ' + this.data.naziv, 'OK', {
         duration: 2500
       })
@@ -70,6 +70,4 @@ export class NacionalnostDialogComponent implements OnInit {
        duration: 1000
      })
   }
-
-
 }

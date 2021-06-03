@@ -32,6 +32,9 @@ import { MatInputModule } from '@angular/material/input'
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NacionalnostDialogComponent } from './components/dialogs/nacionalnost-dialog/nacionalnost-dialog.component';
+import { LigaDialogComponent } from './components/dialogs/liga-dialog/liga-dialog.component';
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +48,7 @@ import { NacionalnostDialogComponent } from './components/dialogs/nacionalnost-d
     TimComponent,
     TimDialogComponent,
     NacionalnostDialogComponent,
-
+    LigaDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +69,8 @@ import { NacionalnostDialogComponent } from './components/dialogs/nacionalnost-d
     FormsModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

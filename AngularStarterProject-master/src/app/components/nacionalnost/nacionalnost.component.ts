@@ -47,8 +47,5 @@ export class NacionalnostComponent implements OnInit, OnDestroy {
         }
       })
   }
-
-
-
 }
 

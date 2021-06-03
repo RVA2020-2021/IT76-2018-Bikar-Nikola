@@ -23,6 +23,11 @@
             <mat-header-cell *matHeaderCellDef>Sediste</mat-header-cell>
             <mat-cell *matCellDef="let row">{{ row.sediste }}</mat-cell>
         </ng-container>
+
+        <ng-container matColumnDef="liga">
+            <mat-header-cell *matHeaderCellDef>Liga</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.liga.naziv }}</mat-cell>
+        </ng-container>
         <!-- Action Buttons -->
         <!-- Action Buttons -->
         <ng-container matColumnDef="actions">
@@ -32,10 +37,10 @@
           </button>
             </mat-header-cell>
             <mat-cell *matCellDef="let row; let i = index">
-                <button (click)="openDialog(2, row.id, row.naziv, row.osnovan, row.sediste)" mat-icon-button color="primary">
+                <button (click)="openDialog(2, row.id, row.naziv, row.osnovan, row.sediste, row.liga)" mat-icon-button color="primary">
             <mat-icon aria-label="Edit">edit</mat-icon>
           </button>
-                <button (click)="openDialog(3, row.id, row.naziv, row.osnovan, row.sediste)" mat-icon-button color="primary">
+                <button (click)="openDialog(3, row.id, row.naziv, row.osnovan, row.sediste, row.liga)" mat-icon-button color="primary">
             <mat-icon aria-label="Delete">delete</mat-icon>
           </button>
             </mat-cell>

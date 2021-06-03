@@ -2,40 +2,28 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Liga } from 'src/app/models/liga';
-import { Tim } from 'src/app/models/tim';
 import { LigaService } from 'src/app/services/liga.service';
-import { TimService } from 'src/app/services/tim.service';
 
 @Component({
-  selector: 'app-tim-dialog',
-  templateUrl: './tim-dialog.component.html',
-  styleUrls: ['./tim-dialog.component.css']
+  selector: 'app-liga-dialog',
+  templateUrl: './liga-dialog.component.html',
+  styleUrls: ['./liga-dialog.component.css']
 })
-export class TimDialogComponent implements OnInit {
-
+export class LigaDialogComponent implements OnInit {
   public flag: number;
-  lige: Liga[];
 
   constructor(public snackBar: MatSnackBar,
-              public dialogRef: MatDialogRef<TimDialogComponent>,
-              @Inject (MAT_DIALOG_DATA) public data: Tim,
-              public timService: TimService,
-              private ligaService: LigaService
-              ) { }
+              public dialogRef: MatDialogRef<LigaDialogComponent>,
+              @Inject (MAT_DIALOG_DATA) public data: Liga,
+              public ligaService: LigaService
+    ) { }
 
   ngOnInit(): void {
-    this.ligaService.getAllLigas().subscribe( data => {
-      this.lige = data;
-    });
   }
-
-  compareTo(a,b) {
-    return a.id == b.id;
-  }
-
+  
   public add() : void {
-    this.timService.addTim(this.data).subscribe(() => {
-      this.snackBar.open('Uspesno dodat tim: ' + this.data.naziv, 'OK', {
+    this.ligaService.addLiga(this.data).subscribe(() => {
+      this.snackBar.open('Uspesno dodata liga: ' + this.data.naziv, 'OK', {
         duration: 25000
       })
     }),
@@ -48,8 +36,8 @@ export class TimDialogComponent implements OnInit {
   }
 
   public update() : void{
-    this.timService.updateTim(this.data).subscribe(()=>{
-      this.snackBar.open('Uspesno azuriran tim: ' + this.data.naziv, 'OK', {
+    this.ligaService.updateLiga(this.data).subscribe(()=>{
+      this.snackBar.open('Uspesno azurirana liga: ' + this.data.naziv, 'OK', {
         duration: 2500
       })
     }),
@@ -62,8 +50,8 @@ export class TimDialogComponent implements OnInit {
   }
 
   public delete() : void{
-    this.timService.deleteTim(this.data.id).subscribe(()=>{
-      this.snackBar.open('Uspesno obrisan tim: ' + this.data.naziv, 'OK', {
+    this.ligaService.deleteLiga(this.data.id).subscribe(()=>{
+      this.snackBar.open('Uspesno obrisana liga: ' + this.data.naziv, 'OK', {
         duration: 2500
       })
     }),
@@ -81,6 +69,4 @@ export class TimDialogComponent implements OnInit {
        duration: 1000
      })
   }
-
-
 }
