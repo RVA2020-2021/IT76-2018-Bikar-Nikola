@@ -104,5 +104,6 @@ export class IgracDialogComponent implements OnInit,OnDestroy {
        duration: 1000
      })
   }
+  
 
 }

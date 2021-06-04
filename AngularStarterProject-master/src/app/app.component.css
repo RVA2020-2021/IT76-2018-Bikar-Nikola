@@ -1,15 +1,14 @@
-
 h1 {
-    color:red;
-    size:24px;
-  }
-  
-  .container {
+    color: red;
+    size: 24px;
+}
+
+.container {
     display: flex;
     flex-basis: column;
-  }
-  
-  .example-container {
+}
+
+.example-container {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -17,14 +16,14 @@ h1 {
     right: 0;
     border: 1px solid black;
     cursor: pointer;
-  }
-  
-  .example-button-row {
+}
+
+.example-button-row {
     display: flex;
     align-items: left;
-  }
-  
-  .mat-button {
+}
+
+.mat-button {
     text-align: left;
     display: block;
-  }
+}

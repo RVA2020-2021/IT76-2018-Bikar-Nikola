@@ -25,7 +25,7 @@ export class TimService {
   }
 
   public deleteTim(id: number): Observable<any> {
-    return this.httpClient.delete(`${TIM_URL}/${id}`)
+    return this.httpClient.delete(`${TIM_URL}/${id}`);
   }
 
 

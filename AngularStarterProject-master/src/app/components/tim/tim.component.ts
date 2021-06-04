@@ -1,5 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { Igrac } from 'src/app/models/igrac';
@@ -19,6 +21,8 @@ export class TimComponent implements OnInit, OnDestroy {
   dataSource: MatTableDataSource<Tim>
   subscription: Subscription;
   selektovanTim: Tim;
+  @ViewChild(MatSort, {static: false}) sort: MatSort;
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   constructor(private timService: TimService,
               private dialog: MatDialog) { }
 
@@ -34,6 +38,8 @@ export class TimComponent implements OnInit, OnDestroy {
    this.subscription = this.timService.getAllTims().subscribe(
       data => {
         this.dataSource = new MatTableDataSource(data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
       }
     ),
     (error: Error) => {
@@ -55,6 +61,10 @@ export class TimComponent implements OnInit, OnDestroy {
     this.selektovanTim = row;
   }
 
-
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.dataSource.filter = filterValue;
+  }
 
 }

@@ -35,6 +35,10 @@ import { NacionalnostDialogComponent } from './components/dialogs/nacionalnost-d
 import { LigaDialogComponent } from './components/dialogs/liga-dialog/liga-dialog.component';
 import { MatSelectModule } from '@angular/material/select';
 import { IgracDialogComponent } from './components/dialogs/igrac-dialog/igrac-dialog.component';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import { CustomPaginator } from '../app/CustomPaginatorConfig';
+
 
 
 @NgModule({
@@ -72,9 +76,13 @@ import { IgracDialogComponent } from './components/dialogs/igrac-dialog/igrac-di
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSortModule,
+    MatPaginatorModule,
   ],
-  providers: [],
+  providers: [
+    {provide: MatPaginatorIntl, useValue: CustomPaginator()}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

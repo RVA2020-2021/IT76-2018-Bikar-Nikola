@@ -35,13 +35,13 @@
                     </mat-panel-description>
                 </mat-expansion-panel-header>
                 <mat-nav-list>
-                    <a mat-button>Pocetna</a>
+                    <a mat-button [routerLink]="['/home']">Pocetna</a>
                 </mat-nav-list>
                 <mat-nav-list>
-                    <a mat-button>Autor</a>
+                    <a mat-button [routerLink]="['/author']">Autor</a>
                 </mat-nav-list>
                 <mat-nav-list>
-                    <a mat-button>O nama</a>
+                    <a mat-button [routerLink]="['/about']">O nama</a>
                 </mat-nav-list>
             </mat-expansion-panel>
         </mat-accordion>
