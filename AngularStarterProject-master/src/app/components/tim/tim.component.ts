@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
+import { Igrac } from 'src/app/models/igrac';
 import { Liga } from 'src/app/models/liga';
 import { Tim } from 'src/app/models/tim';
 import { TimService } from 'src/app/services/tim.service';
@@ -17,6 +18,7 @@ export class TimComponent implements OnInit, OnDestroy {
   displayedColumns = ['id', 'naziv', 'osnovan','sediste', 'liga', 'actions'];
   dataSource: MatTableDataSource<Tim>
   subscription: Subscription;
+  selektovanTim: Tim;
   constructor(private timService: TimService,
               private dialog: MatDialog) { }
 
@@ -47,6 +49,10 @@ export class TimComponent implements OnInit, OnDestroy {
           this.loadData();
         }
       })
+  }
+
+  selectRow(row){
+    this.selektovanTim = row;
   }
 
 
