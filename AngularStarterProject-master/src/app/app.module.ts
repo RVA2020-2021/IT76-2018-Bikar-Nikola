@@ -38,6 +38,7 @@ import { IgracDialogComponent } from './components/dialogs/igrac-dialog/igrac-di
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { CustomPaginator } from '../app/CustomPaginatorConfig';
+import { MatCardModule } from '@angular/material/card';
 
 
 
@@ -79,6 +80,7 @@ import { CustomPaginator } from '../app/CustomPaginatorConfig';
     MatSelectModule,
     MatSortModule,
     MatPaginatorModule,
+    MatCardModule
   ],
   providers: [
     {provide: MatPaginatorIntl, useValue: CustomPaginator()}
