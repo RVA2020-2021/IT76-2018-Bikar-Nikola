@@ -20,7 +20,6 @@ export class IgracDialogComponent implements OnInit,OnDestroy {
   igraci: Igrac[];
   timovi: Tim[];
   nacionalnosti: Nacionalnost[];
-  igracSubscription: Subscription;
 
 
   constructor(
@@ -33,7 +32,6 @@ export class IgracDialogComponent implements OnInit,OnDestroy {
   ) { }
 
   ngOnDestroy(): void {
-    this.igracSubscription.unsubscribe();
   }
 
   ngOnInit(): void {
@@ -43,13 +41,7 @@ export class IgracDialogComponent implements OnInit,OnDestroy {
     this.timService.getAllTims().subscribe( data => {
       this.timovi = data;
     })
-    this.igracSubscription = this.igracService.getIgraci().subscribe(
-      data => {
-      this.igraci = data;
-      }),
-      (error: Error) => {
-        console.log(error.name + ' ' + error.message)
-      };
+    
   }
 
   compareTo(a,b) {
